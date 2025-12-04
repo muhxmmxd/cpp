@@ -1,1 +1,1 @@
-# This is a C++ code repository
+# This is a C++ Code Repository.
