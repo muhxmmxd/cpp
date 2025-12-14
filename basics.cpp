@@ -3,7 +3,7 @@
 using namespace std;
 int main()
 {   
-  //basic string output
+    //basic string output
     string name="Muhammad";
     int age=18;
     cout << "There's a guy named " << name <<".\n";
@@ -12,7 +12,7 @@ int main()
     cout <<"But he doesn't like being "<<age<<".\n";
 
 
-//string operations
+    //string operations
     char a='A';
     cout << "The character is: " << a << endl;
     string str1="Git is a version control system.";
@@ -26,7 +26,7 @@ int main()
     cout<<endl<< str1substr;
 
 
-//arithmetic operations
+    //arithmetic operations
 
    cout << 3+5 << endl; // prints the sum of 3 and 5
    cout << 3-5 << endl; // prints the difference of 3 and 5
@@ -57,11 +57,22 @@ int main()
     cout<< exp(1) << endl; // prints e raised to the power of 1
 
 
-    // taking input from user
+     //taking input from user
     int agee;
     cout<< "Enter your age:"<<endl;
     cin>>agee;
-    cout << "You are " <<agee<< " years old.";
+    cout << "You are " <<agee<< " years old.....";
+    cout<<endl;
+    string uni_name;
+    cin>> uni_name;
+
+    
+
+    cout << uni_name<< endl;
+    string abb;
+
+    getline(cin, abb);
+    cout << abb;
 
     return 0;
 }
