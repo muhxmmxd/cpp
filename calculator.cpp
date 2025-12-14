@@ -19,7 +19,7 @@ int main(){
     else if(operation==2) cout <<"The subtraction of number 2 from number 1 is "<< n1-n2<< endl;
     else if(operation==3) cout <<"The multiplication of the numbers is "<< n1*n2<< endl;
     else if(operation==4) cout <<"The division of the number 1 by number 2 is "<< n1/n2<< endl;
-    else {cout<< "Invalid input"; continue;}
+    else {cout<< "Invalid input"<<endl;}
     
     bool a=true;
 
@@ -27,7 +27,7 @@ int main(){
     char q;
 
     cin>>q;
-    if (q=='n'){ rep = false;}
+    if (q=='n'){ break;}
 
     
 

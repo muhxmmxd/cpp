@@ -69,10 +69,7 @@ int main()
     
 
     cout << uni_name<< endl;
-    string abb;
 
-    getline(cin, abb);
-    cout << abb;
 
     return 0;
 }
