@@ -10,10 +10,10 @@ Date: December 14, 2025
 */
 
 #include<iostream>
-#include <thread>
-#include <chrono>
+
 using namespace std;
-int main(){
+int main()
+{
     bool rep=true;
     do {
         int n1, n2;
@@ -42,9 +42,6 @@ int main(){
             cout <<"The division of the number 1 by number 2 is "<< n1/n2<< endl;
         }
         else {cout<< "Invalid input"<<endl;}
-        this_thread::sleep_for(chrono::seconds(3));
-
-    
 
         cout <<"Do you want to calculate another expression? Y or N"<<endl;
         char q;
