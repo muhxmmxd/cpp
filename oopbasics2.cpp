@@ -19,7 +19,7 @@ public: //accesible anywhere in the program
     }
     int getAge()
     {
-        return age;
+        return age;   
     }
     int getEmployeeID()
     {
