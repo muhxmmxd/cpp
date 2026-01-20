@@ -1,17 +1,18 @@
 #include <iostream>
 class AbstractEmployee
 {
-    virtual void askForPromo() = 0;
+    virtual void askForPromo()=0;
 };
 class Employee : AbstractEmployee
 {
-private:
+private: //not at all accesible outside this class
     std::string name;
-    int age;
     int employeeID;
 
+protected: //accesible in derived classes but not accesible elsewhere
+    int age;
     // getter methods
-public:
+public: //accesible anywhere in the program
     std::string getName()
     {
         return name;
@@ -39,12 +40,15 @@ public:
             std::cout << name << " is hired with Employee ID: " << employeeID << std::endl;
         }
     }
-    void askForPromo() override
+    virtual void askForPromo() // base class method made virtual to achieve polymorphism.
+                                // without the 'virtual' keyword the function called by employee pointer 
+                                // will always run this function and not the specific function specified in respective derived classes
     {
+        std::cout<<"Talk to head manager personally to enquire whether you can get a promotion or not.";
     }
 };
 
-class Developer : public Employee // necessary to write public as public members of the base
+class Developer : public  Employee // necessary to write public as public members of the base
                                   //  class become private in the derived class,
                                   //  making them inaccessible from outside the derived class.
 {
@@ -75,6 +79,19 @@ public:
                 std::cout << std::endl;
         }
     }
+    void askForPromo()//override 
+    {   
+        int bugsFixed;
+        std::cout<< getName()<<", how many bugs did you fix this year? Give an estimate number:";
+        std::cin>>bugsFixed;
+        if(bugsFixed>=50)
+            std::cout<<"Congrats, you're promoted! Contact head manager for details.\n\n"<<std::endl;
+        
+        else
+            std::cout<<"Sorry, you're not promoted yet. Keep working hard!\n\n" <<std::endl;
+
+
+    }
 };
 
 class Manager : public Employee
@@ -88,6 +105,17 @@ public:
                   << std::endl;
     }
     using Employee::Employee;
+    void askForPromo() //override
+    {
+        std::cout<<getName()<<", have you made a decision this year which made a significant positive impact on the company? Enter 0 for no , 1 for yes.";
+        bool decision;
+        std::cin>>decision;
+        if(decision)    
+            std::cout<<"Congrats, you're promoted! Contact head manager for details.\n\n"<<std::endl;
+        else
+            std::cout<<"Sorry, you're not promoted yet. Keep working hard!\n\n" <<std::endl;
+
+    }
 };
 
 // main method
@@ -98,11 +126,33 @@ int main()
     Developer dev2("Jiya", 17, 209812, "SWE2");
 
     Developer dev3("John", 18, 209813, "Finances manager");
-    // std::cout << dev3.getName()<< " role is "<< dev3.getRole() << std::endl;
 
     Manager mg1("Umar", 25, 211001, "Finance");
 
     Manager mg2("Tim", 22, 211002, "AI");
+
+    Employee *e1=&dev1;
+    Employee *e2=&dev2;
+    Employee *e3=&dev3;
+    Employee *e4=&mg1;
+    Employee *e5=&mg2;
+
+    // the '->' operator is used to access members of a class/struct through a pointer
+    // it is just a shortcut for dereferencing the pointer and then implementing . operator
+    // for e.g. e1->askForPromo is exactly same as (*e1).askForPromo()
+
+    e1->askForPromo(); //polymorphism in action
+    (*e3).askForPromo(); //the benefit of polymorphism here is we don't need to know employee is a developer or
+                        // a manager to and run askforpromotion function
+                        //there are different parameters on which a developer and a manager gets promotion.
+    e5->askForPromo(); //for that, we have different implementations of askforpromotion function in derived classes
+    e2->askForPromo();
+    e4->askForPromo();
+
+
+
+
+
 
     return 0;
 }
